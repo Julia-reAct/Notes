@@ -6,7 +6,39 @@ interface Values {
     text: string;
 }
 
-function CreatNote() {
+function CreatAndChangeNote(obj: { first: string; last: string }|null) {
+    if (obj && typeof obj === "object") {
+        return (
+            <div>
+                <h1>Change Note</h1>
+                <Formik
+                    initialValues={{
+                        title: "",
+                        text: "",
+                    }}
+                    onSubmit={(
+                        values: Values,
+                        {setSubmitting}: FormikHelpers<Values>
+                    ) => {
+                        setTimeout(() => {
+                            alert(JSON.stringify(values, null, 2));
+                            setSubmitting(false);
+                        }, 500);
+                    }}
+                >
+                    <Form>
+                        <label htmlFor="title">Title</label>
+                        <Field id="title" name="title" placeholder="Title"/>
+
+                        <label htmlFor="text">Text</label>
+                        <Field id="text" name="text" placeholder="Text"/>
+                        <button type="submit">Submit</button>
+                    </Form>
+                </Formik>
+                <button type="submit">Return</button>
+            </div>
+        )
+    }
     return (
         <div>
             <h1>Signup</h1>
@@ -17,7 +49,7 @@ function CreatNote() {
                 }}
                 onSubmit={(
                     values: Values,
-                    { setSubmitting }: FormikHelpers<Values>
+                    {setSubmitting}: FormikHelpers<Values>
                 ) => {
                     setTimeout(() => {
                         alert(JSON.stringify(values, null, 2));
@@ -27,16 +59,16 @@ function CreatNote() {
             >
                 <Form>
                     <label htmlFor="title">Title</label>
-                    <Field id="title" name="title" placeholder="Title" />
+                    <Field id="title" name="title" placeholder="Title"/>
 
                     <label htmlFor="text">Text</label>
-                    <Field id="text" name="text" placeholder="Text" />
+                    <Field id="text" name="text" placeholder="Text"/>
                     <button type="submit">Submit</button>
                 </Form>
             </Formik>
         </div>
 
-);
+    );
 }
 
-export default CreatNote;
+export default CreatAndChangeNote;

@@ -1,8 +1,11 @@
 import React from 'react';
 
 function MainNote() {
+
     return (
-        <div></div>
+        <div>
+
+        </div>
 
     );
 }
