@@ -1,10 +1,10 @@
 import React from 'react';
 
-function CreatNote() {
+function MainNote() {
     return (
         <div></div>
 
     );
 }
 
-export default CreatNote;
+export default MainNote;
